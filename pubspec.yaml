@@ -65,6 +65,8 @@ flutter:
      - assets\images\device5.jpg
      - assets\images\device3.jpeg
      - assets\images\device4.jpeg
+     - assets\images\wel.jpg
+     - assets\images\watch.jpg
  
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

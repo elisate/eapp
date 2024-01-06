@@ -20,7 +20,7 @@ class Myapp extends StatelessWidget {
         '/wat': (context) => Watch(),
         '/air': (context) => Aitel(),
         '/buyy': (context) => Buy(),
-
+        '/prof': (context) => Profile(),
       },
     );
   }
@@ -31,94 +31,56 @@ class Baseapp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.shopify),
-        title: Text('Welcome to eapp'),
-        backgroundColor: Colors.green,
+        leading: const Icon(
+          Icons.shopify,
+          color: Colors.green,
+          size: 30,
+        ),
+        title: Text(
+          'Welcome to eapp',
+          style: TextStyle(color: Colors.green),
+        ),
+        backgroundColor: Colors.white,
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: 16.0),
-              child: Row(
-                children: [
-                  Text(
-                    'Welcome To eapp  ',
-                    style: TextStyle(
-                        fontSize: 40,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 0),
-              child: Row(
-                children: [
-                  Image(
-                    image: AssetImage(
-                      'assets/images/devices.webp',
-                    ),
-                    fit: BoxFit.cover,
-                    width: 360,
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 2,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 30),
-              child: Row(
-                children: [
-                  Text(
-                    'we are ready to satisfy your desire',
-                    style: TextStyle(fontSize: 20, color: Colors.black),
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 30),
-              child: Row(
-                children: [
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.green, // Background color
-                        onPrimary: Colors.white, // Text color
-                      ),
-                      child: Text('LOGIN',
-                          style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold)),
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/loginuser');
-                      }),
-                  SizedBox(
-                    width: 30,
+        child: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+            image: AssetImage('assets/images/watch.jpg'),
+            fit: BoxFit.cover,
+          )),
+          child: Center(
+            child: Column(
+              children: [
+                Text(
+                  'welcome to eapp',
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.green, // Background color
-                        onPrimary: Colors.white, // Text color
-                      ),
-                      child: Text(
-                        'SIGN UP',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 30),
-                      ),
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/sign');
-                      })
-                ],
-              ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 5, left: 37),
+                  child: Row(
+                    children: [
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/loginuser');
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary:
+                                Colors.green, // Background color of the button
+                            onPrimary: Colors.white,
+                          ),
+                          child: Text(
+                              'welcome to eapp ,click to sign up or login'))
+                    ],
+                  ),
+                )
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -166,16 +128,44 @@ class Userlogin extends StatelessWidget {
                       obscureText: true, // Hides the entered text for passwords
                       // Other properties like controller, validator, onChanged can be added here
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           primary:
                               Colors.green, // Background color of the button
                           onPrimary: Colors.white,
+                          minimumSize: Size(double.infinity, 50),
                         ),
                         onPressed: () {
                           Navigator.pushNamed(context, '/loggedpage');
                         },
-                        child: Text('LOGIN'))
+                        child: Text('LOGIN')),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: Row(
+                        children: [
+                          Text('If You Dont have Account'),
+                          SizedBox(
+                            width: 2,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/sign');
+                            },
+                            child: Text(
+                              'Sign up',
+                              style: TextStyle(
+                                color: Colors.green,
+                                decoration: TextDecoration.underline,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
                   ],
                 ))
           ],
@@ -253,11 +243,13 @@ class Guestlogin extends StatelessWidget {
                       obscureText: true, // Hides the entered text for passwords
                       // Other properties like controller, validator, onChanged can be added here
                     ),
+                    SizedBox(height: 20),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           primary:
                               Colors.green, // Background color of the button
                           onPrimary: Colors.white,
+                          minimumSize: Size(double.infinity, 50),
                         ),
                         onPressed: () {
                           Navigator.pushNamed(context, '/loginuser');
@@ -320,7 +312,7 @@ class Userpage extends StatelessWidget {
               children: [
                 Image(
                   image: AssetImage('assets/images/device1.jpg'),
-                  width: 100,
+                  width: 89,
                   height: 150,
                 ),
                 SizedBox(
@@ -408,7 +400,7 @@ class Userpage extends StatelessWidget {
                       onPrimary: Colors.white,
                     ),
                     onPressed: () {
-                        Navigator.pushNamed(context, '/buyy');
+                      Navigator.pushNamed(context, '/buyy');
                     },
                     child: Text('buy'))
               ],
@@ -458,7 +450,7 @@ class Userpage extends StatelessWidget {
                       onPrimary: Colors.white,
                     ),
                     onPressed: () {
-                        Navigator.pushNamed(context, '/buyy');
+                      Navigator.pushNamed(context, '/buyy');
                     },
                     child: Text('buy'))
               ],
@@ -470,7 +462,7 @@ class Userpage extends StatelessWidget {
               children: [
                 Image(
                   image: AssetImage('assets/images/device5.jpg'),
-                  width: 75,
+                  width: 90,
                   height: 150,
                 ),
                 SizedBox(
@@ -508,7 +500,7 @@ class Userpage extends StatelessWidget {
                       onPrimary: Colors.white,
                     ),
                     onPressed: () {
-                        Navigator.pushNamed(context, '/buyy');
+                      Navigator.pushNamed(context, '/buyy');
                     },
                     child: Text('buy'))
               ],
@@ -532,21 +524,33 @@ class Setting extends StatelessWidget {
         children: [
           SizedBox(height: MediaQuery.of(context).padding.top),
           Padding(
-            padding: EdgeInsets.all(0.0),
+            padding: EdgeInsets.only(left: 0),
             child: Row(
               // mainAxisAlignment: MainAxisAlignment.center,
 
               children: [
-                Icon(
-                  Icons.person,
-                  size: 30,
-                  color: Colors.green,
-                ),
-                SizedBox(width: 10),
-                Text(
-                  'profile',
-                  style: TextStyle(fontSize: 20),
-                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 20),
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                           Navigator.pushNamed(context, '/prof');
+                        },
+                        child: Icon(
+                          Icons.person,
+                          size: 30,
+                          color: Colors.green,
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        'profile',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),
@@ -554,30 +558,44 @@ class Setting extends StatelessWidget {
           Row(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                Icons.shopping_bag,
-                size: 30,
-                color: Colors.green,
-              ),
-              SizedBox(width: 10),
-              Text(
-                'shopping',
-                style: TextStyle(fontSize: 20),
-              ),
+              Padding(
+                padding: EdgeInsets.only(left: 20),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.shopping_bag,
+                      size: 30,
+                      color: Colors.green,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      'shopping',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
           SizedBox(height: 15),
           Row(
             children: [
-              Icon(
-                Icons.shopping_basket,
-                size: 30,
-                color: Colors.green,
-              ),
-              SizedBox(width: 10),
-              Text(
-                'shopping',
-                style: TextStyle(fontSize: 20),
+              Padding(
+                padding: EdgeInsets.only(left: 20),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.shopping_basket,
+                      size: 30,
+                      color: Colors.green,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      'shopping',
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ],
+                ),
               )
             ],
           ),
@@ -586,17 +604,24 @@ class Setting extends StatelessWidget {
           ),
           Row(
             children: [
-              Icon(
-                Icons.shopping_cart,
-                size: 30,
-                color: Colors.green,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                'cart',
-                style: TextStyle(fontSize: 20),
+              Padding(
+                padding: EdgeInsets.only(left: 20),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.shopping_cart,
+                      size: 30,
+                      color: Colors.green,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'cart',
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ],
+                ),
               )
             ],
           ),
@@ -605,17 +630,24 @@ class Setting extends StatelessWidget {
           ),
           Row(
             children: [
-              Icon(
-                Icons.shopping_cart_checkout_rounded,
-                size: 30,
-                color: Colors.green,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                'Checkout/payment',
-                style: TextStyle(fontSize: 20),
+              Padding(
+                padding: EdgeInsets.only(left: 20),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.shopping_cart_checkout_rounded,
+                      size: 30,
+                      color: Colors.green,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Checkout/payment',
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ],
+                ),
               )
             ],
           )
@@ -682,7 +714,19 @@ class Spark extends StatelessWidget {
                 Text('And 64G of quality ROM and processor of 5ghz')
               ],
             ),
-          )
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green, // Background color of the button
+                onPrimary: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/buyy');
+              },
+              child: Text('buy'))
         ],
       ),
     );
@@ -745,7 +789,19 @@ class Headset extends StatelessWidget {
                 Text('microphone and developed quality ears protecters')
               ],
             ),
-          )
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green, // Background color of the button
+                onPrimary: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/buyy');
+              },
+              child: Text('buy'))
         ],
       ),
     );
@@ -808,7 +864,19 @@ class Watch extends StatelessWidget {
                 Text('which provide functionality as smart phones')
               ],
             ),
-          )
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green, // Background color of the button
+                onPrimary: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/buyy');
+              },
+              child: Text('buy'))
         ],
       ),
     );
@@ -871,7 +939,19 @@ class Aitel extends StatelessWidget {
                 Text('And 32G of quality ROM and processor of 2ghz')
               ],
             ),
-          )
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green, // Background color of the button
+                onPrimary: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/buyy');
+              },
+              child: Text('buy'))
         ],
       ),
     );
@@ -888,14 +968,11 @@ class Buy extends StatelessWidget {
       ),
       body: Column(
         children: [
-       Container(
-              width: 300, 
-             
-              padding: EdgeInsets.only(left: 40),// Set the width as desired
+          Container(
+              width: 300,
+              padding: EdgeInsets.only(left: 55), // Set the width as desired
               child: Column(
                 children: [
-                
-
                   SizedBox(height: 20), // Adding space between input fields
                   TextFormField(
                     decoration: InputDecoration(
@@ -915,7 +992,7 @@ class Buy extends StatelessWidget {
                     obscureText: true, // Hides the entered text for passwords
                     // Other properties like controller, validator, onChanged can be added here
                   ),
-                   SizedBox(height: 15), // Adding space between input fields
+                  SizedBox(height: 15), // Adding space between input fields
                   TextFormField(
                     decoration: InputDecoration(
                       labelText: 'CVV',
@@ -925,7 +1002,7 @@ class Buy extends StatelessWidget {
                     obscureText: true, // Hides the entered text for passwords
                     // Other properties like controller, validator, onChanged can be added here
                   ),
-                   SizedBox(height: 15), // Adding space between input fields
+                  SizedBox(height: 15), // Adding space between input fields
                   TextFormField(
                     decoration: InputDecoration(
                       labelText: 'Expirely Date',
@@ -935,18 +1012,40 @@ class Buy extends StatelessWidget {
                     obscureText: true, // Hides the entered text for passwords
                     // Other properties like controller, validator, onChanged can be added here
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: Colors.green, // Background color of the button
                         onPrimary: Colors.white,
+                        minimumSize: Size(double.infinity, 50),
                       ),
-                      onPressed: () {
-                        
-                      },
+                      onPressed: () {},
                       child: Text('PAY'))
                 ],
               ))
         ],
+      ),
+    );
+  }
+}
+
+class Profile extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+      
+        title: Text('user profile'),
+      ),
+      body: Center(
+        child: Row(
+          children: [
+            Text('profile page')
+          ],
+        ),
       ),
     );
   }
